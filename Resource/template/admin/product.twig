@@ -1,0 +1,47 @@
+<script>
+    $(function () {
+        // 購入ボタンエリアを配置
+        $('div.c-secondaryCol > div:nth-child(1)').after($('#purchase_button_create_tag'));
+        // クリップボードへコピー
+        $('#purchase_button_create_tag_copy').on('click', function () {
+            $('#purchase_button_create_tag_textarea').select();
+            document.execCommand('copy');
+        });
+    });
+</script>
+
+<div id="purchase_button_create_tag" class="card rounded border-0 mb-4">
+    <div class="collapse show ec-cardCollapse">
+        <div class="card-body">
+            <div class="d-block text-center">
+                <a href="#" class="btn btn-block btn-ec-regular"
+                   data-toggle="modal"
+                   data-target="#purchase_button_create_tag_modal"
+                   title="購入ボタンを作成">購入ボタンを作成</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="purchase_button_create_tag_modal" tabindex="-1" role="dialog"
+     aria-labelledby="purchase_button_create_tag_modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">購入ボタン</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="form-control"
+                          rows="10"
+                          id="purchase_button_create_tag_textarea">{{ include('@PurchaseButton/admin/tag.twig') }}</textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ec-sub" type="button" data-dismiss="modal">キャンセル</button>
+                <button class="btn btn-ec-conversion" data-dismiss="modal" id="purchase_button_create_tag_copy">クリップボードへコピー</button>
+            </div>
+        </div>
+    </div>
+</div>
